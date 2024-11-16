@@ -62,6 +62,7 @@ dependencies = [
  "aoc-runner",
  "aoc-runner-derive",
  "color-eyre",
+ "float-cmp",
  "glam",
  "indoc",
  "insta",
@@ -231,6 +232,15 @@ checksum = "7cd915d99f24784cdc19fd37ef22b97e3ff0ae756c7e492e9fbfe897d61e2aec"
 dependencies = [
  "indenter",
  "once_cell",
+]
+
+[[package]]
+name = "float-cmp"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b09cf3155332e944990140d967ff5eceb70df778b34f77d8075db46e4704e6d8"
+dependencies = [
+ "num-traits",
 ]
 
 [[package]]

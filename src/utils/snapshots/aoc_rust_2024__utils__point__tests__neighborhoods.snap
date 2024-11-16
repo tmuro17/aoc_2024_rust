@@ -1,0 +1,19 @@
+---
+source: src/utils/point.rs
+expression: neighbors
+snapshot_kind: text
+---
+[
+    Point {
+        x: 1,
+        y: 0,
+    },
+    Point {
+        x: 0,
+        y: 1,
+    },
+    Point {
+        x: 1,
+        y: 1,
+    },
+]
