@@ -1,0 +1,27 @@
+[package]
+name = "aoc-rust-2024"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+aoc-runner = "0.3.0"
+aoc-runner-derive = "0.3.0"
+color-eyre = "0.6.3"
+itertools = "0.13.0"
+nom = "7.1.3"
+rayon = "1.10.0"
+log = "0.4.22"
+regex = "1.11"
+num = "0.4"
+nom-supreme = "0.8"
+nom_locate = "4.2.0"
+glam = "0.29.2"
+once_cell = "1.19.0"
+
+[dev-dependencies]
+rstest = "0.23.0"
+insta = { version = "1.41.1", features = ["yaml"] }
+indoc = "2.0.5"
+pretty_assertions = "1.4.1"
