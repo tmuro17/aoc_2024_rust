@@ -78,7 +78,6 @@ mod parsers {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::day1::parsers::parse_input;
     use indoc::indoc;
     use pretty_assertions::assert_eq;
     use rstest::rstest;
@@ -116,7 +115,7 @@ mod tests {
     #[case::part2(part2, 23_150_395)]
     fn prod_tests(#[case] f: fn(&(Vec<u64>, Vec<u64>)) -> u64, #[case] expected: u64) {
         let input = fs::read_to_string("input/2024/day1.txt").unwrap();
-        let parsed = parse_input(input.trim_end()).unwrap();
+        let parsed = input_generator(input.trim_end()).unwrap();
         let result = f(&parsed);
 
         assert_eq!(result, expected);
