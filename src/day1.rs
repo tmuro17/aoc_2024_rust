@@ -1,5 +1,6 @@
 use aoc_runner_derive::{aoc, aoc_generator};
 use color_eyre::eyre::{eyre, Result};
+use itertools::Itertools;
 use once_cell::sync::Lazy;
 
 static COLOR_EYRE: Lazy<()> = Lazy::new(|| color_eyre::install().unwrap());
@@ -29,11 +30,11 @@ pub fn part2(lists: &(Vec<u64>, Vec<u64>)) -> u64 {
     let left = lists.0.clone();
     let right = lists.1.clone();
 
-    left.iter().fold(0, |acc, item| {
-        let freq = right.iter().filter(|y| &item == y).count() as u64;
+    let freq_map = right.iter().counts();
 
-        acc + (freq * item)
-    })
+    left.iter()
+        .map(|x| x * freq_map.get(x).copied().unwrap_or_default() as u64)
+        .sum()
 }
 
 mod parsers {
@@ -114,7 +115,7 @@ mod tests {
 
         assert_eq!(result, 31);
     }
-
+    
     #[test]
     fn prod_part_1() {
         let input = fs::read_to_string("input/2024/day1.txt").unwrap();
