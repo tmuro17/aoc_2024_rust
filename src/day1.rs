@@ -81,6 +81,7 @@ mod tests {
     use crate::day1::parsers::parse_input;
     use indoc::indoc;
     use pretty_assertions::assert_eq;
+    use rstest::rstest;
     use std::fs;
 
     const SAMPLE: &str = indoc! {
@@ -100,37 +101,24 @@ mod tests {
         assert_eq!(right, vec![4, 3, 5, 3, 9, 3]);
     }
 
-    #[test]
-    fn test_part1() {
+    #[rstest]
+    #[case::part1(part1, 11)]
+    #[case::part2(part2, 31)]
+    fn sample_tests(#[case] f: fn(&(Vec<u64>, Vec<u64>)) -> u64, #[case] expected: u64) {
         let parsed = input_generator(SAMPLE).unwrap();
-        let result = part1(&parsed);
+        let result = f(&parsed);
 
-        assert_eq!(result, 11);
+        assert_eq!(result, expected);
     }
 
-    #[test]
-    fn test_part2() {
-        let parsed = input_generator(SAMPLE).unwrap();
-        let result = part2(&parsed);
-
-        assert_eq!(result, 31);
-    }
-    
-    #[test]
-    fn prod_part_1() {
-        let input = fs::read_to_string("input/2024/day1.txt").unwrap();
-        let parsed = parse_input(input.trim()).unwrap();
-        let result = part1(&parsed);
-
-        assert_eq!(result, 936_063);
-    }
-
-    #[test]
-    fn prod_part_2() {
+    #[rstest]
+    #[case::part1(part1, 936_063)]
+    #[case::part2(part2, 23_150_395)]
+    fn prod_tests(#[case] f: fn(&(Vec<u64>, Vec<u64>)) -> u64, #[case] expected: u64) {
         let input = fs::read_to_string("input/2024/day1.txt").unwrap();
         let parsed = parse_input(input.trim_end()).unwrap();
-        let result = part2(&parsed);
+        let result = f(&parsed);
 
-        assert_eq!(result, 23_150_395);
+        assert_eq!(result, expected);
     }
 }
