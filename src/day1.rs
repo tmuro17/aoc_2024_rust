@@ -5,13 +5,13 @@ use once_cell::sync::Lazy;
 static COLOR_EYRE: Lazy<()> = Lazy::new(|| color_eyre::install().unwrap());
 
 #[aoc_generator(day1)]
-pub fn input_generator(input: &str) -> Result<(Vec<i64>, Vec<i64>)> {
+pub fn input_generator(input: &str) -> Result<(Vec<u64>, Vec<u64>)> {
     Lazy::get(&COLOR_EYRE);
     parsers::parse_input(input).map_err(|e| eyre!(e.to_string()))
 }
 
 #[aoc(day1, part1)]
-pub fn part1(lists: &(Vec<i64>, Vec<i64>)) -> u64 {
+pub fn part1(lists: &(Vec<u64>, Vec<u64>)) -> u64 {
     let mut left = lists.0.clone();
     let mut right = lists.1.clone();
 
@@ -20,26 +20,25 @@ pub fn part1(lists: &(Vec<i64>, Vec<i64>)) -> u64 {
 
     left.iter()
         .zip(right.iter())
-        .map(|(left, right)| (left - right).unsigned_abs())
+        .map(|(left, right)| left.abs_diff(*right))
         .sum()
 }
 
-#[allow(clippy::cast_sign_loss, clippy::cast_possible_wrap)]
 #[aoc(day1, part2)]
-pub fn part2(lists: &(Vec<i64>, Vec<i64>)) -> u64 {
+pub fn part2(lists: &(Vec<u64>, Vec<u64>)) -> u64 {
     let left = lists.0.clone();
     let right = lists.1.clone();
 
     left.iter().fold(0, |acc, item| {
-        let freq = right.iter().filter(|y| &item == y).count() as i64;
+        let freq = right.iter().filter(|y| &item == y).count() as u64;
 
         acc + (freq * item)
-    }) as u64
+    })
 }
 
 mod parsers {
     use nom::{
-        character::complete::{i64 as i64_parser, newline, space1},
+        character::complete::{newline, space1, u64 as u64_parser},
         multi::separated_list1,
         sequence::separated_pair,
         IResult, Parser,
@@ -51,11 +50,11 @@ mod parsers {
 
     type Span<'a> = LocatedSpan<&'a str>;
 
-    pub(crate) fn parse_input(input: &str) -> color_eyre::Result<(Vec<i64>, Vec<i64>), ParseError> {
+    pub(crate) fn parse_input(input: &str) -> color_eyre::Result<(Vec<u64>, Vec<u64>), ParseError> {
         final_parser(lists)(Span::new(input))
     }
 
-    fn lists(input: Span) -> IResult<Span, (Vec<i64>, Vec<i64>), ParseError> {
+    fn lists(input: Span) -> IResult<Span, (Vec<u64>, Vec<u64>), ParseError> {
         separated_list1(newline, pair)
             .map(|pairs| {
                 pairs
@@ -70,16 +69,19 @@ mod parsers {
             .parse(input)
     }
 
-    fn pair(input: Span) -> IResult<Span, (i64, i64), ParseError> {
-        separated_pair(i64_parser, space1, i64_parser).parse(input)
+    fn pair(input: Span) -> IResult<Span, (u64, u64), ParseError> {
+        separated_pair(u64_parser, space1, u64_parser).parse(input)
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::day1::parsers::parse_input;
     use indoc::indoc;
     use pretty_assertions::assert_eq;
+    use std::fs;
+
     const SAMPLE: &str = indoc! {
         "3   4
          4   3
@@ -111,5 +113,23 @@ mod tests {
         let result = part2(&parsed);
 
         assert_eq!(result, 31);
+    }
+
+    #[test]
+    fn prod_part_1() {
+        let input = fs::read_to_string("input/2024/day1.txt").unwrap();
+        let parsed = parse_input(input.trim()).unwrap();
+        let result = part1(&parsed);
+
+        assert_eq!(result, 936_063);
+    }
+
+    #[test]
+    fn prod_part_2() {
+        let input = fs::read_to_string("input/2024/day1.txt").unwrap();
+        let parsed = parse_input(input.trim_end()).unwrap();
+        let result = part2(&parsed);
+
+        assert_eq!(result, 23_150_395);
     }
 }
