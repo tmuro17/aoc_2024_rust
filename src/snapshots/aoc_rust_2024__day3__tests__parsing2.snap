@@ -1,0 +1,33 @@
+---
+source: src/day3.rs
+expression: inst
+snapshot_kind: text
+---
+[
+    Multiply(
+        Mul {
+            x: 2,
+            y: 4,
+        },
+    ),
+    Dont,
+    Multiply(
+        Mul {
+            x: 5,
+            y: 5,
+        },
+    ),
+    Multiply(
+        Mul {
+            x: 11,
+            y: 8,
+        },
+    ),
+    Do,
+    Multiply(
+        Mul {
+            x: 8,
+            y: 5,
+        },
+    ),
+]

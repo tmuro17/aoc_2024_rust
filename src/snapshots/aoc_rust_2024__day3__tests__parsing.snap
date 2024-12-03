@@ -1,0 +1,23 @@
+---
+source: src/day3.rs
+expression: muls
+snapshot_kind: text
+---
+[
+    Mul {
+        x: 2,
+        y: 4,
+    },
+    Mul {
+        x: 5,
+        y: 5,
+    },
+    Mul {
+        x: 11,
+        y: 8,
+    },
+    Mul {
+        x: 8,
+        y: 5,
+    },
+]
