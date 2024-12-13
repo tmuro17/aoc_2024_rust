@@ -1,0 +1,133 @@
+---
+source: src/day5.rs
+expression: reports
+snapshot_kind: text
+---
+Printing {
+    rules: [
+        Rule {
+            first: 47,
+            second: 53,
+        },
+        Rule {
+            first: 97,
+            second: 13,
+        },
+        Rule {
+            first: 97,
+            second: 61,
+        },
+        Rule {
+            first: 97,
+            second: 47,
+        },
+        Rule {
+            first: 75,
+            second: 29,
+        },
+        Rule {
+            first: 61,
+            second: 13,
+        },
+        Rule {
+            first: 75,
+            second: 53,
+        },
+        Rule {
+            first: 29,
+            second: 13,
+        },
+        Rule {
+            first: 97,
+            second: 29,
+        },
+        Rule {
+            first: 53,
+            second: 29,
+        },
+        Rule {
+            first: 61,
+            second: 53,
+        },
+        Rule {
+            first: 97,
+            second: 53,
+        },
+        Rule {
+            first: 61,
+            second: 29,
+        },
+        Rule {
+            first: 47,
+            second: 13,
+        },
+        Rule {
+            first: 75,
+            second: 47,
+        },
+        Rule {
+            first: 97,
+            second: 75,
+        },
+        Rule {
+            first: 47,
+            second: 61,
+        },
+        Rule {
+            first: 75,
+            second: 61,
+        },
+        Rule {
+            first: 47,
+            second: 29,
+        },
+        Rule {
+            first: 75,
+            second: 13,
+        },
+        Rule {
+            first: 53,
+            second: 13,
+        },
+    ],
+    updates: [
+        [
+            75,
+            47,
+            61,
+            53,
+            29,
+        ],
+        [
+            97,
+            61,
+            53,
+            29,
+            13,
+        ],
+        [
+            75,
+            29,
+            13,
+        ],
+        [
+            75,
+            97,
+            47,
+            61,
+            53,
+        ],
+        [
+            61,
+            13,
+            29,
+        ],
+        [
+            97,
+            13,
+            75,
+            29,
+            47,
+        ],
+    ],
+}
