@@ -1,0 +1,79 @@
+---
+source: src/day7.rs
+expression: reports
+snapshot_kind: text
+---
+[
+    Equation {
+        target: 190,
+        operands: [
+            10,
+            19,
+        ],
+    },
+    Equation {
+        target: 3267,
+        operands: [
+            81,
+            40,
+            27,
+        ],
+    },
+    Equation {
+        target: 83,
+        operands: [
+            17,
+            5,
+        ],
+    },
+    Equation {
+        target: 156,
+        operands: [
+            15,
+            6,
+        ],
+    },
+    Equation {
+        target: 7290,
+        operands: [
+            6,
+            8,
+            6,
+            15,
+        ],
+    },
+    Equation {
+        target: 161011,
+        operands: [
+            16,
+            10,
+            13,
+        ],
+    },
+    Equation {
+        target: 192,
+        operands: [
+            17,
+            8,
+            14,
+        ],
+    },
+    Equation {
+        target: 21037,
+        operands: [
+            9,
+            7,
+            18,
+            13,
+        ],
+    },
+    Equation {
+        target: 292,
+        operands: [
+            11,
+            6,
+            16,
+            20,
+        ],
+    },
+]
