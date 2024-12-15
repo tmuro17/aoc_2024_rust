@@ -95,15 +95,15 @@ mod tests {
         Ok(())
     }
 
-    // #[rstest]
-    // #[case::part1(part1, 3749)]
-    // #[case::part2(part2, 11387)]
-    // fn sample_tests(#[case] f: fn(&[Equation]) -> u64, #[case] expected: u64) {
-    //     let parsed = parser(SAMPLE).unwrap();
-    //     let result = f(&parsed);
-    //
-    //     assert_eq!(result, expected);
-    // }
+    #[rstest]
+    #[case::part1(part1, 3749)]
+    #[case::part2(part2, 11387)]
+    fn sample_tests(#[case] f: fn(&[Equation]) -> u64, #[case] expected: u64) {
+        let parsed = parser(SAMPLE).unwrap();
+        let result = f(&parsed);
+    
+        assert_eq!(result, expected);
+    }
 
     // #[rstest]
     // #[case::part1(part1, 3_245_122_495_150)]
